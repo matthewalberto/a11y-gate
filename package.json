@@ -1,0 +1,36 @@
+{
+  "name": "a11y-gate",
+  "version": "1.0.0",
+  "description": "Run axe-core WCAG 2.0/2.1/2.2 A and AA checks with your installed Chrome and fail the build on any violation.",
+  "type": "module",
+  "bin": {
+    "a11y-gate": "dist/cli.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "npm run build && node test/run.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "accessibility",
+    "a11y",
+    "wcag",
+    "axe-core",
+    "ci"
+  ],
+  "author": "Matthew Alberto",
+  "license": "MIT",
+  "dependencies": {
+    "axe-core": "^4.10.2",
+    "puppeteer-core": "^23.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.43",
+    "typescript": "^5.9.3"
+  }
+}

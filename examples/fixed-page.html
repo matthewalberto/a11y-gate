@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Example signup page (fixed)</title>
+  <style>
+    body { font-family: sans-serif; margin: 2rem; color: #222222; background: #ffffff; }
+    .muted { color: #555555; }
+    .dialog { border: 2px solid #333; padding: 1rem; margin-top: 1rem; }
+    .step[hidden], .dialog[hidden] { display: none; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Join our mailing list</h1>
+    <img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" width="120" height="60" alt="">
+    <p class="muted">Hear about events, scholarships and volunteer days.</p>
+
+    <section class="step" id="step-1">
+      <label for="email">Email address</label>
+      <input type="email" id="email" autocomplete="email">
+      <button type="button" id="next">Continue</button>
+    </section>
+
+    <section class="step" id="step-2" hidden>
+      <h2>Almost done</h2>
+      <label for="name">Your name</label>
+      <input type="text" id="name" autocomplete="name">
+      <button type="button" id="open-terms">Read the terms</button>
+    </section>
+
+    <div class="dialog" id="terms" role="dialog" aria-label="Terms" hidden>
+      <p>Terms go here.</p>
+      <button type="button" id="close-terms" aria-label="Close terms">
+        <svg width="12" height="12" aria-hidden="true"><path d="M0 0L12 12M12 0L0 12" stroke="#000"/></svg>
+      </button>
+    </div>
+  </main>
+
+  <script>
+    document.getElementById("next").addEventListener("click", function () {
+      document.getElementById("step-1").hidden = true;
+      document.getElementById("step-2").hidden = false;
+    });
+    document.getElementById("open-terms").addEventListener("click", function () {
+      document.getElementById("terms").hidden = false;
+    });
+    document.getElementById("close-terms").addEventListener("click", function () {
+      document.getElementById("terms").hidden = true;
+    });
+  </script>
+</body>
+</html>

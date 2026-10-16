@@ -1,0 +1,27 @@
+{
+  "settleMs": 200,
+  "states": [
+    {
+      "name": "resting",
+      "note": "Step 1 as the page loads"
+    },
+    {
+      "name": "step-2",
+      "note": "After Continue: the name field and terms button",
+      "steps": [
+        { "action": "type", "selector": "#email", "text": "test@example.com" },
+        { "action": "click", "selector": "#next" },
+        { "action": "waitFor", "selector": "#step-2" }
+      ]
+    },
+    {
+      "name": "terms-dialog",
+      "note": "The terms dialog open on top of step 2",
+      "steps": [
+        { "action": "click", "selector": "#next" },
+        { "action": "click", "selector": "#open-terms" },
+        { "action": "waitFor", "selector": "#terms" }
+      ]
+    }
+  ]
+}

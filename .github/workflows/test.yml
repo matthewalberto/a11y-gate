@@ -1,0 +1,29 @@
+name: test
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm ci
+      - run: npm run build
+      - name: Find Chrome
+        run: echo "CHROME_PATH=$(command -v google-chrome || command -v google-chrome-stable)" >> "$GITHUB_ENV"
+      - name: The fixed example passes every state
+        run: node dist/cli.js examples/fixed-page.html --states examples/states.json
+      - name: The flawed example is blocked
+        run: |
+          set +e
+          node dist/cli.js examples/flawed-page.html --states examples/states.json
+          code=$?
+          if [ "$code" -ne 1 ]; then echo "expected exit 1, got $code"; exit 1; fi
+          echo "flawed page was blocked as expected"
+      - name: Test suite
+        run: npm test

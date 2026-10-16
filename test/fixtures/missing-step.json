@@ -1,0 +1,14 @@
+{
+  "states": [
+    {
+      "name": "resting"
+    },
+    {
+      "name": "state-that-cannot-be-reached",
+      "note": "The selector does not exist, so this state must be SKIPPED and fail the run",
+      "steps": [
+        { "action": "click", "selector": "#this-button-does-not-exist" }
+      ]
+    }
+  ]
+}
